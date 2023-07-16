@@ -1,3 +1,3 @@
 # Simple Todo List
 
-## For d\*code purposes
+## For d\*code purpose
