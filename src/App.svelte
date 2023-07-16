@@ -1,9 +1,9 @@
 <script>
 import { writable } from "svelte/store";
+import DCodeLogoUrl from './assets/dcode_logo.png'
+import ErrorismLogoUrl from './assets/errorism_logo.png'
 import { createDropdownMenu } from '@melt-ui/svelte'
 const { menu, item, trigger, arrow } = createDropdownMenu()
-
-import logoUrl from './assets/dcode_logo.png'
 export const TodoList = writable(JSON.parse(localStorage.getItem("todolist")));
 TodoList.subscribe(value => {
     localStorage.setItem("todolist", (typeof value === "object" ) ? JSON.stringify(value) : value);
@@ -34,18 +34,21 @@ function add(value) {
 
 <main>
   <div class="relative flex flex-col items-center justify-start min-w-full min-h-screen overflow-hidden bg-base-1 ">
-    <div class="container mx-auto">
+    <div class="absolute opacity-[0.03]">
+      <img class="select-none md:scale-[4.0] scale-[3.0] rotate-12 md:-rotate-12 transition-all duration-300" src="{ErrorismLogoUrl}" alt="errorism logo">
+    </div>
+    <div class="container z-10 mx-auto">
     <!-- app bar -->
     <div class="h-[134px] flex items-center justify-start px-2 relative">
       <div class="flex items-center justify-center gap-x-3">
-        <img src="{logoUrl}" alt="Dcode logo">
+        <img src="{DCodeLogoUrl}" alt="Dcode logo">
         <div class="flex flex-col justify-center leading-tight">
           <div class="text-[32px] font-bold text-base-12">Todo List</div>
           <div class="text-[16px] font-base text-base-11">D*CODE research laboratory </div>
         </div>
       </div>
       <div class="absolute right-2 sm:hidden">
-        <div melt={$menu} class="w-40 rounded-sm bg-base-3 focus:!outline-none">
+        <div melt={$menu} class="z-30 w-40 rounded-sm bg-base-3 focus:!outline-none">
           <div {...$item} use:item class="m-1 ">
             <button on:click={()=>{window.location.href = 'https://portfolio.errorism.cc/'}} class="flex items-center w-full gap-1 p-1 text-xs transition-all duration-300 rounded-sm group hover:bg-brand-5 text-brand-12">
               <svg class="w-3 h-3 transition-transform duration-300 text-base-12 group-hover:-rotate-12" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z" fill="currentColor"></path></svg>
@@ -80,20 +83,27 @@ function add(value) {
       </div>
     </div>
     <!-- app body -->
-      <div class="flex flex-col items-center justify-center gap-4 md:flex-row">
-        <div class="flex w-full h-12 px-2">
-          <div class="w-full bg-white">Portfolio</div>
+      <div class="flex flex-col items-center justify-center gap-4 transition-all duration-300 md:flex-row">
+        <div class="w-full h-12 px-2">
+          <div class="relative flex w-full gap-x-2">
+            <div class="text-2xl font-semibold text-base-12">Task</div>
+            <div class="w-[28px] h-[28px] rounded-full bg-brand-3 flex justify-center items-center text-brand-12">0</div>
+            <button class=" focus:outline-none hover:text-base-12 transition-all duration-300 hover:scale-110 absolute h-[28px] right-0 flex items-center justify-center text-base-11">clear</button>
+          </div>
+          <div class="w-full h-[1px] bg-base-6 mt-1"/>
+          <!-- task list -->
         </div>
-        <div class="flex w-full h-12 px-2 ">
-          <div class="w-full bg-white">Repository</div>
+        <div class="w-full h-12 px-2">
+          <div class="relative flex w-full gap-x-2">
+            <div class="text-2xl font-semibold text-base-12">Done</div>
+            <div class="w-[28px] h-[28px] rounded-full bg-green-3 flex justify-center items-center text-green-12">0</div>
+            <button class=" focus:outline-none hover:text-base-12 transition-all duration-300 hover:scale-110 absolute h-[28px] right-0 flex items-center justify-center text-base-11">clear</button>
+          </div>
+          <div class="w-full h-[1px] bg-base-6 mt-1"/>
+          <!-- task list -->
         </div>
       </div>
     </div>
-    <!-- <div class="opacity-10 select-none absolute font-bold text-[190px] sm:text-[300px] lg:text-[480px] xl:text-[640px] xl2:text-[820px]">
-      <span class="text-transparent bg-clip-text bg-gradient-to-b from-base-1 to-base-9">
-        D*Code
-      </span>
-    </div> -->
 
 
 
