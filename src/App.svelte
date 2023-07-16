@@ -67,8 +67,8 @@ function UnDone(item) {
 
 <main>
   <div class="relative flex flex-col items-center justify-start min-w-full min-h-screen overflow-hidden bg-base-1 ">
-    <div class="absolute opacity-[0.03]">
-      <img class="select-none md:scale-[4.0] scale-[3.0] rotate-12 md:-rotate-12 transition-all duration-300" src="{ErrorismLogoUrl}" alt="errorism logo">
+    <div class="absolute opacity-[0.03]  dark:grayscale">
+      <img class="select-none md:scale-[4.0] scale-[3.0] rotate-12 md:-rotate-12 transition-all duration-300 " src="{ErrorismLogoUrl}" alt="errorism logo">
     </div>
     <div class="container z-10 mx-auto">
     <!-- app bar -->

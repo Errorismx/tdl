@@ -3,6 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 :root {
+  color-scheme: dark light;
   font-family: "Noto Sans Thai", sans-serif;
   --base-1: hsl(206, 30%, 98.8%);
   --base-2: hsl(210, 16.7%, 97.6%);
